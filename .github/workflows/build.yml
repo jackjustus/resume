@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  publish:
     runs-on: [self-hosted, resume]
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
             typst fonts | grep -qx "$f" || { echo "::error::missing font: $f"; exit 1; }
           done
 
-      - name: Build
+      - name: build
         run: |
           mkdir -p out
           for v in embedded swe entertainment; do
