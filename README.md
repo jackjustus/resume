@@ -1,7 +1,7 @@
 # resume builder
-This repo contains the source file for my resume. This repo is made in typst.
+This repo contains the source files for my resume. This repo is made in typst.
 
-The idea behind this was to simplify maintaing different versions of my resume my extracting the common info and being to just declare which sections i want in a particular version, rather than dealing with tedious styling things in google docs.
+The idea behind this was to simplify maintaining different versions of my resume by extracting the common info and being able to just declare a particular version of my resume, rather than dealing with tedious styling things in google docs.
 
 Every time a change is pushed, i have a cloud ci runner (thanks oracle free tier) which publishes a release with the compiled PDFs. 
 
