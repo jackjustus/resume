@@ -1,0 +1,5 @@
+out/
+*.pdf
+fonts/
+ci/.env
+.DS_Store
