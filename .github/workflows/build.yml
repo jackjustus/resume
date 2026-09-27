@@ -29,6 +29,7 @@ jobs:
           mkdir -p out
           for v in embedded swe entertainment; do
             typst compile --input version=$v resume.typ "out/jackson-justus-$v.pdf"
+            typst compile --input version=$v --format png --ppi 150 --pages 1 resume.typ "out/jackson-justus-$v.png"
           done
           for f in jobs/*.typ; do
             typst compile --root . "$f" "out/job-check.pdf"
