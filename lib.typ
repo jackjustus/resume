@@ -57,8 +57,8 @@
     [Expected May 2028],
   ))
   [
-    Bachelor of Science in Computer Engineering, Minor in Theatre Arts \
-    Relevant Coursework: Software Engineering, Electric Circuits, Digital Logic Design, Differential Eq., Linear Algebra
+    Bachelor of Science in Computer Engineering, Minor in Theatre Arts, Upsilon Pi Epsilon \
+    Relevant Coursework: Software Engineering, Databases, Computer Organization, Digital Logic, Differential Equations
   ]
 
   // ---------- Skills ----------

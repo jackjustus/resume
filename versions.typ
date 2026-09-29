@@ -7,15 +7,12 @@
 )
 
 #let embedded(skills: embedded-skills) = resume(skills: skills)[
-  #section[Projects]
-  #lp-solver
   #section[Relevant Experience]
-  #ride-club
+  #digits
+  #ride-club()
   #motorsport
   #ta
   #shine
-  #section[Other Work Experience]
-  #lighting
 ]
 
 #let swe-skills = (
@@ -24,15 +21,12 @@
 )
 
 #let swe(skills: swe-skills) = resume(skills: skills)[
-  #section[Projects]
-  #lp-solver
   #section[Relevant Experience]
+  #digits
   #ta
+  #ride-club(ui: false)
   #motorsport
-  #ride-club
   #shine
-  #section[Other Work Experience]
-  #lighting
 ]
 
 #let entertainment-skills = (
@@ -43,7 +37,7 @@
 
 #let entertainment(skills: entertainment-skills) = resume(skills: skills)[
   #section[Relevant Experience]
-  #ride-club
+  #ride-club()
   #lighting
   #motorsport
   #ta
