@@ -43,7 +43,7 @@
   align(center)[
     #text(size: 24pt, weight: "bold", fill: blue)[Jackson Justus]
     #block(above: 19.7pt, text(fill: blue)[
-      #link("mailto:jackjust@bu.edu")[jackjust\@bu.edu]#sep;949-304-3903#sep#link("https://linkedin.com/in/jackjustus")[linkedin.com/in/jackjustus]#sep#link("https://jackjustusld.com/eng")[jackjustusld.com/eng]
+      #link("mailto:jackjust@bu.edu")[jackjust\@bu.edu]#sep;949-304-3903#sep#link("https://linkedin.com/in/jackjustus")[linkedin.com/in/jackjustus]#sep#link("https://jackjust.com/eng")[jackjust.com/eng]
     ])
   ]
 
@@ -53,7 +53,7 @@
     columns: (1fr, auto, auto),
     column-gutter: 28.7pt,
     [*Boston University, College of Engineering* | Boston, MA],
-    [3.86 GPA],
+    [3.7 GPA],
     [Expected May 2028],
   ))
   [
@@ -61,11 +61,11 @@
     Relevant Coursework: Software Engineering, Databases, Computer Organization, Digital Logic, Differential Equations
   ]
 
+  body
+
   // ---------- Skills ----------
   section[Skills]
   skills.pairs().map(((label, items)) => [#text(fill: blue)[*#label:*] #items]).join(linebreak())
-
-  body
 
   context if counter(page).final().first() > 1 {
     panic("resume runs past one page")

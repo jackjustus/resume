@@ -3,7 +3,7 @@
 #let lp-solver = [
   #entry(
     [LP Problem Solver using Analog Circuitry],
-    date: link("https://jackjustusld.com/eng")[jackjustusld.com/eng],
+    date: link("https://jackjust.com/eng")[jackjust.com/eng],
   )
   - Engineered an analog circuit to solve linear programming problems 7,000x faster than conventional digital methods.
   - Applied analog methods to optimize complex problems alongside a seven-person research team.
@@ -47,7 +47,7 @@
 ]
 
 #let lighting = [
-  #entry([Audio Visual Lighting Technician,], org: [Saddleback Church – Lake Forest, CA], date: [Dec 2022 – Aug 2024])
+  #entry([Audio Visual Lighting Technician,], org: [Saddleback Church – Lake Forest, CA], date: [Dec 2022 – Aug 2025 (Seasonal)])
   - Programmed a GrandMA3 lighting console to design an engaging, concert-style atmosphere for a 2000+ cap venue.
   - Trained and managed a team of 11 volunteers, fostering independence and self-sufficiency.
   - Maintained and engineered a robust network to ensure reliable control of 50+ moving lighting fixtures.

@@ -16,8 +16,8 @@
 ]
 
 #let swe-skills = (
-  Languages: [C/C++, Python, Java, C\#, Assembly],
-  Tools: [Git/GitHub, CI/CD, GoogleTest, Flask, Linux, TCP/IP, MatLab],
+  Computer: [C/C++, Kotlin/Java, Python, React, SQL/PostgreSQL, Git/GitHub, CI/CD, Networks, Unix/Linux, Verilog],
+  Hardware: [Raspberry Pi/Arduino/STM32, I2C/SPI/UART/CAN, PCB Design (KiCad), Embedded Systems, Soldering],
 )
 
 #let swe(skills: swe-skills) = resume(skills: skills)[
