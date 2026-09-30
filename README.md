@@ -11,11 +11,11 @@ Every time a change is pushed, i have a cloud ci runner (thanks oracle free tier
 ## Compiled Resumes
 
 ### Software Engineering
-[![SWE resume](https://github.com/jackjustus/resume/releases/download/latest/jackson-justus-swe.png)](https://github.com/jackjustus/resume/releases/download/latest/jackson-justus-swe.pdf)
+[![SWE resume](https://github.com/jackjustus/resume/releases/download/latest/Jack_Justus_SWE_Resume.png)](https://github.com/jackjustus/resume/releases/download/latest/Jack_Justus_SWE_Resume.pdf)
 
 ### Embedded Software
-[![Embedded resume](https://github.com/jackjustus/resume/releases/download/latest/jackson-justus-embedded.png)](https://github.com/jackjustus/resume/releases/download/latest/jackson-justus-embedded.pdf)
+[![Embedded resume](https://github.com/jackjustus/resume/releases/download/latest/Jack_Justus_Embedded_Resume.png)](https://github.com/jackjustus/resume/releases/download/latest/Jack_Justus_Embedded_Resume.pdf)
 
 ### Controls/Entertainment Engineering
-[![Entertainment resume](https://github.com/jackjustus/resume/releases/download/latest/jackson-justus-entertainment.png)](https://github.com/jackjustus/resume/releases/download/latest/jackson-justus-entertainment.pdf)
+[![Entertainment resume](https://github.com/jackjustus/resume/releases/download/latest/Jack_Justus_Entertainment_Resume.png)](https://github.com/jackjustus/resume/releases/download/latest/Jack_Justus_Entertainment_Resume.pdf)
 

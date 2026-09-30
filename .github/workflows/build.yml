@@ -27,9 +27,11 @@ jobs:
       - name: build
         run: |
           mkdir -p out
-          for v in embedded swe entertainment; do
-            typst compile --input version=$v resume.typ "out/jackson-justus-$v.pdf"
-            typst compile --input version=$v --format png --ppi 150 --pages 1 resume.typ "out/jackson-justus-$v.png"
+          for pair in embedded:Embedded swe:SWE entertainment:Entertainment; do
+            v=${pair%%:*}
+            name="Jack_Justus_${pair#*:}_Resume"
+            typst compile --input version=$v resume.typ "out/$name.pdf"
+            typst compile --input version=$v --format png --ppi 150 --pages 1 resume.typ "out/$name.png"
           done
           for f in jobs/*.typ; do
             typst compile --root . "$f" "out/job-check.pdf"
@@ -41,7 +43,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete latest --cleanup-tag --yes || true
-          gh release create latest out/*.pdf out/*.png \
+          assets=()
+          for f in out/*.pdf out/*.png; do
+            base=$(basename "$f")
+            assets+=("$f#${base//_/ }")
+          done
+          gh release create latest "${assets[@]}" \
             --title latest \
             --notes "" \
             --target "$GITHUB_SHA"
