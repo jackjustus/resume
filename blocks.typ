@@ -15,7 +15,7 @@
   - Implemented a company top-10 priority (Closed Periods v2) end-to-end on the Ledger team, owning architectural planning, backend services, and frontend integration alongside 2 interns and 6 full-time engineers.
   - Extended Kotlin/Java view-generation pipelines with new schema tables to freeze transaction attributes in closed accounting periods, shipped to 13.3K+ organizations and 7.4K+ active users to block imported and ML-classified edits.
   - Designed and built a closed-period review-queue system using Go microservices, GraphQL/Protobuf endpoints, and Google Spanner on Kubernetes, fulfilling a contractual requirement for a top-20 accounting firm's deal with Digits.
-  - Shipped 40+ peer-reviewed PRs across three codebases (Kotlin, Go, React/Apollo) with 90% test coverage targets via CircleCI; monitored production deploys with Google Cloud Console logging, error reporting, and Dataflow metrics.
+  - Shipped 90+ peer-reviewed PRs across three codebases (Kotlin, Go, React/Apollo) with 90% test coverage targets via CircleCI; monitored production deploys with Google Cloud Console logging, error reporting, and Dataflow metrics.
 ]
 
 #let ta = [
