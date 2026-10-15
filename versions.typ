@@ -30,17 +30,19 @@
 ]
 
 #let entertainment-skills = (
-  Controls: [Ride Control Systems, State Machines, PID Motor Control, E-Stop/Safety Logic, GrandMA3, Lighting Networks],
-  Computer: [C/C++, Python, Flask, Linux, TCP/IP, Git/GitHub],
-  Hardware: [KiCad, Raspberry Pi, Soldering, Diagnostics, Documentation, I2C/SPI/UART/CAN],
+  Controls: [Control Systems, PLCs, Ladder Logic, Electrical Systems, Communication Networks, System Design],
+  Entertainment: [GrandMA2/3, ASTM F2291, ASTM F3598, Unity],
+  Computer: [C/C++, C\#, Java/Kotlin, Python, Linux, Microsoft Office (Excel, Word, Powerpoint), Git/GitHub],
+  Hardware: [KiCad, Raspberry Pi, Soldering, I2C/SPI/UART/CAN, CAD (Solidworks, AutoCAD, Fusion360)],
 )
 
 #let entertainment(skills: entertainment-skills) = resume(skills: skills)[
   #section[Relevant Experience]
-  #ride-club()
+  #trec-virtcommisioningvariant()
+  #digits
   #lighting
   #motorsport
-  #ta
-  #section[Projects]
-  #lp-solver
+  //#ta
+  //#section[Projects]
+  //#lp-solver
 ]

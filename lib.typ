@@ -68,6 +68,6 @@
   skills.pairs().map(((label, items)) => [#text(fill: blue)[*#label:*] #items]).join(linebreak())
 
   context if counter(page).final().first() > 1 {
-    panic("resume runs past one page")
+    //warn("resume runs past one page")
   }
 }

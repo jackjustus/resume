@@ -26,12 +26,22 @@
 
 #let ride-club(ui: true) = [
   #entry([President & Electrical Lead, Terrier Ride Engineering Club,], org: [Boston University], date: [Sep 2024 – Present])
-  - Led a 20-person engineering team to design and build a functional model theme park ride, earning 5th place as a first-year team at the Ride Engineering Competition, coordinating mechanical, electrical, and design subteams.
+  - Led a 20-person team across mechanical, electrical, and design subteams to build a functional model theme park ride, placing 5th of 23 as a first-year team at the Ride Engineering Competition
+  - Deployed a *Python* pipeline which validated an *ASTM F3598* compliant risk assessment and renders it to a formatted PDF; deployed as a Slack bot for teamates to use & publish on demand.
   - Designed and implemented a Raspberry Pi ride control system with a state machine and event-driven architecture, integrating a UART PID motor controller for precise motion control and embedded safety logic.
   #if ui [- Developed a Flask-based UI displayed on a touchscreen, enabling drivers to monitor system faults in real time.]
-  - Engineered and documented the ride's electrical system in KiCad, including a redundant hard-wired E-Stop and detailed schematics for wiring, power distribution, and interfaces to support design reviews and troubleshooting.
+  - Designed the ride’s electrical system in *KiCad*, including a redundant hard-wired E-Stop, with schematics for power distribution, wiring, and controller interfaces used in design reviews and troubleshooting
 ]
 
+#let trec-virtcommisioningvariant() = [
+  #entry([President & Electrical Lead, Terrier Ride Engineering Club,], org: [Boston University], date: [Sep 2024 – Present])
+  - Led a 20-person team across mechanical, electrical, and design subteams to build a functional and ASTM F2291 compliant model theme park ride, placing 5th of 23 as a first-year team at the Ride Engineering Competition.
+- Developed ride control software in Python on a Raspberry Pi: an 8-state machine executing JSON-defined motion profiles on a motor controller over UART, with 15+ fault codes in 3 severity tiers that automatically latch an E-Stop.
+- Built a Python fault-injection simulator that emulates the control computer to validate safety controller responses to 6 failure modes and the reset path before hardware integration; mocked hardware for off-ride testing with 97 automated tests in CI.
+- Built a CRC-checked UART heartbeat link to the ride’s safety PLC, so either side halts the ride on communication loss, limit-switch mismatch, or speed limit violations.
+- Built a Flask operator interface on a touchscreen kiosk that displays ride state and faults in real time.
+- Designed the ride’s electrical system in KiCad, including a redundant hard-wired E-Stop, with schematics for power distribution, wiring, and controller interfaces used in design reviews.
+]
 #let motorsport = [
   #entry([Software Deputy, Terrier Motorsport (Formula Hybrid-Electric),], org: [Boston University], date: [Sep 2024 – Present])
   - Developed a robust software package in Python to manage the backend of a Linux-based Dash Display System, integrating SPI, I2C, and CAN devices using SMBus2 & CANTools into a unified system for seamless data transfer.
