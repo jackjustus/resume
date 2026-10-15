@@ -43,7 +43,7 @@
   align(center)[
     #text(size: 24pt, weight: "bold", fill: blue)[Jackson Justus]
     #block(above: 19.7pt, text(fill: blue)[
-      #link("mailto:jackjust@bu.edu")[jackjust\@bu.edu]#sep;949-304-3903#sep#link("https://linkedin.com/in/jackjustus")[linkedin.com/in/jackjustus]#sep#link("https://jackjust.com/eng")[jackjust.com/eng]
+      #link("mailto:jackjust@bu.edu")[jackjust\@bu.edu]#sep;949-304-3903#sep#link("https://linkedin.com/in/jackjustus")[linkedin.com/in/jackjustus]#sep#link("https://jackjust.com")[jackjust.com]
     ])
   ]
 
@@ -58,7 +58,7 @@
   ))
   [
     Bachelor of Science in Computer Engineering, Minor in Theatre Arts, Upsilon Pi Epsilon \
-    Relevant Coursework: Software Engineering, Databases, Computer Organization, Digital Logic, Differential Equations
+    Relevant Coursework: Software Engineering, Databases, Computer Organization, Electric Circuits, Differential Equations
   ]
 
   body
