@@ -38,7 +38,7 @@
 
 #let entertainment(skills: entertainment-skills) = resume(skills: skills)[
   #section[Relevant Experience]
-  #ride-club()
+  #ride-club(risk: true)
   #digits
   #jjld
   #lighting

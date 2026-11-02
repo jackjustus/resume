@@ -24,12 +24,13 @@
   - Developed C/C++ homework assignments and implemented CI/CD tests with GoogleTest, integrating them into a GitHub-based autograder pipeline; received faculty commendation for initiative in curriculum development.
 ]
 
-#let ride-club(ui: true) = [
+#let ride-club(ui: true, risk: false) = [
   #entry([President & Electrical Lead, Terrier Ride Engineering Club,], org: [Boston University], date: [Sep 2024 – Present])
   - Led a 20-person team across mechanical, electrical, and design subteams to build a functional, ASTM F2291-compliant model theme park ride, placing 5th of 23 as a first-year team at the Ride Engineering Competition.
   - Developed ride control software in Python on a Raspberry Pi: an 8-state machine executing JSON-defined motion profiles on a motor controller over UART, with 15+ fault codes in 3 severity tiers that automatically latch an E-Stop.
   - Built a Python fault-injection simulator that emulates the control computer to validate safety controller responses to 6 failure modes and the reset path before hardware integration; mocked hardware for off-ride testing with 97 automated tests in CI.
   - Built a CRC-checked UART heartbeat link to the ride's safety PLC, so either side halts the ride on communication loss, limit-switch mismatch, or speed limit violations.
+  #if risk [- Built a Python pipeline that validates the ride's ASTM F3598 risk assessment and renders it to PDF, deployed as a Slack bot teammates use to publish on demand.]
   #if ui [- Built a Flask operator interface on a touchscreen kiosk that displays ride state and faults in real time.]
   - Designed the ride's electrical system in KiCad, including a redundant hard-wired E-Stop, with schematics for power distribution, wiring, and controller interfaces used in design reviews.
 ]
