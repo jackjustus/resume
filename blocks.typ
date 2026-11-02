@@ -11,7 +11,7 @@
 ]
 
 #let digits = [
-  #entry([Software Engineering Intern,], org: [Digits], date: [May 2026 – Aug 2026])
+  #entry([Software Engineering Intern,], org: [Digits], date: [May 2026 – Present])
   - Implemented a company top-10 priority (Closed Periods v2) end-to-end on the Ledger team, owning architectural planning, backend services, and frontend integration alongside 2 interns and 6 full-time engineers.
   - Extended Kotlin/Java view-generation pipelines with new schema tables to freeze transaction attributes in closed accounting periods, shipped to 13.3K+ organizations and 7.4K+ active users to block imported and ML-classified edits.
   - Designed and built a closed-period review-queue system using Go microservices, GraphQL/Protobuf endpoints, and Google Spanner on Kubernetes, fulfilling a contractual requirement for a top-20 accounting firm's deal with Digits.
@@ -47,9 +47,16 @@
   #if not short [- Researched analog circuitry for real-time object avoidance updates in drone systems with PhD mentors.]
 ]
 
+#let jjld = [
+  #entry([Owner & Lighting Designer,], org: [Jack Justus Lighting Design], date: [Jun 2024 – Present])
+  - Co-designed and programmed Easter 2026 at Connection Pointe Christian Church (IN): 160 rented fixtures on 43 truss sections flown from 22 hoists, documented in a 9-sheet Vectorworks plot package used for load-in.
+  - Designed Columbia Business School's NYC fashion show lighting; pitched tiered budgets and rented gear via 4Wall.
+  - Designed and pre-programmed Saddleback's CR Summit conference (2024–25), timecoding cues to music on a Hog 4.
+]
+
 #let lighting = [
   #entry([Audio Visual Lighting Technician,], org: [Saddleback Church – Lake Forest, CA], date: [Dec 2022 – Aug 2025 (Seasonal)])
-  - Programmed a GrandMA3 lighting console to design an engaging, concert-style atmosphere for a 2,000-seat venue.
+  - Programmed a GrandMA3 console for concert-style weekend services in a 2,000-seat venue.
   - Trained and led a team of 11 volunteers to run shows independently.
-  - Maintained and engineered a robust network to ensure reliable control of 50+ moving lighting fixtures.
+  - Maintained and engineered the lighting control network for 50+ moving fixtures.
 ]

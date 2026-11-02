@@ -31,7 +31,7 @@
 
 #let entertainment-skills = (
   Controls: [Control Systems, PLCs, Ladder Logic, Electrical Systems, Communication Networks, System Design],
-  Entertainment: [GrandMA2/3, ASTM F2291, ASTM F3598, Unity],
+  Entertainment: [GrandMA2/3, Hog 4, Vectorworks, Lightwright, ASTM F2291, ASTM F3598, Unity],
   Computer: [C/C++, C\#, Java/Kotlin, Python, Linux, Git/GitHub],
   Hardware: [KiCad, Raspberry Pi, Soldering, I2C/SPI/UART/CAN, CAD (SolidWorks, AutoCAD, Fusion 360)],
 )
@@ -40,8 +40,8 @@
   #section[Relevant Experience]
   #ride-club()
   #digits
+  #jjld
   #lighting
-  #motorsport
   //#ta
   //#section[Projects]
   //#lp-solver
