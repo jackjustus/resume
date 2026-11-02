@@ -50,7 +50,6 @@
 #let jjld = [
   #entry([Owner & Lighting Designer,], org: [Jack Justus Lighting Design], date: [Jun 2024 – Present])
   - Co-designed and programmed Easter 2026 at Connection Pointe Christian Church (IN): 160 rented fixtures on 43 truss sections flown from 22 hoists, documented in a 9-sheet Vectorworks plot package used for load-in.
-  - Designed Columbia Business School's NYC fashion show lighting; pitched tiered budgets and rented gear via 4Wall.
   - Designed and pre-programmed Saddleback's CR Summit conference (2024–25), timecoding cues to music on a Hog 4.
 ]
 
