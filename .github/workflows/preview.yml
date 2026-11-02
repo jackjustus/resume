@@ -1,0 +1,102 @@
+name: Preview resume
+
+# Builds every resume version for a pull request, publishes the PDFs to a
+# "pr-<number>" prerelease, and keeps one PR comment updated with previews.
+# The prerelease is deleted when the PR is closed or merged.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  TAG: pr-${{ github.event.pull_request.number }}
+  PR: ${{ github.event.pull_request.number }}
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  preview:
+    # Only branches in this repo; fork PRs never reach the self-hosted runner.
+    if: >-
+      github.event.action != 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, resume]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: ci/build.sh out
+
+      - name: Publish to the "pr-${{ github.event.pull_request.number }}" prerelease
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          gh release delete "$TAG" --cleanup-tag --yes || true
+          assets=()
+          for f in out/*.pdf out/*.png; do
+            base=$(basename "$f")
+            assets+=("$f#${base//_/ }")
+          done
+          gh release create "$TAG" "${assets[@]}" \
+            --title "Preview for #$PR" \
+            --notes "Built from $HEAD_SHA. Deleted automatically when #$PR closes." \
+            --target "$HEAD_SHA" \
+            --prerelease \
+            --latest=false
+
+      - name: Comment with previews
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          base="https://github.com/$GH_REPO/releases/download/$TAG"
+          marker="<!-- resume-preview -->"
+          {
+            echo "$marker"
+            echo "### Resume preview"
+            echo
+            echo "Built from $HEAD_SHA."
+            echo
+            echo "| Version | Pages | PDF |"
+            echo "| --- | --- | --- |"
+            while IFS=$'\t' read -r name pages; do
+              label=${name#Jack_Justus_}; label=${label%_Resume}
+              flag=""; [ "$pages" -gt 1 ] && flag=" ⚠️"
+              echo "| $label | $pages$flag | [PDF]($base/$name.pdf) |"
+            done < out/pages.tsv
+            while IFS=$'\t' read -r name pages; do
+              label=${name#Jack_Justus_}; label=${label%_Resume}
+              echo
+              echo "<details><summary>$label</summary>"
+              echo
+              # The query string stops GitHub's image cache serving an old build.
+              echo "[![$label]($base/$name.png?v=$HEAD_SHA)]($base/$name.pdf)"
+              echo
+              echo "</details>"
+            done < out/pages.tsv
+          } > comment.md
+
+          id=$(gh api "repos/$GH_REPO/issues/$PR/comments" --paginate \
+                 --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -n1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GH_REPO/issues/comments/$id" -F body=@comment.md > /dev/null
+          else
+            gh pr comment "$PR" --body-file comment.md
+          fi
+
+  cleanup:
+    if: >-
+      github.event.action == 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    # Only needs gh, so it runs on a GitHub-hosted runner.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete the preview prerelease
+        run: gh release delete "$TAG" --cleanup-tag --yes || true

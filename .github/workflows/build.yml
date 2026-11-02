@@ -18,25 +18,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check fonts
-        run: |
-          for f in Calibri Arial; do
-            typst fonts | grep -qx "$f" || { echo "::error::missing font: $f"; exit 1; }
-          done
-
-      - name: build
-        run: |
-          mkdir -p out
-          for pair in embedded:Embedded swe:SWE entertainment:Entertainment; do
-            v=${pair%%:*}
-            name="Jack_Justus_${pair#*:}_Resume"
-            typst compile --input version=$v resume.typ "out/$name.pdf"
-            typst compile --input version=$v --format png --ppi 150 --pages 1 resume.typ "out/$name.png"
-          done
-          for f in jobs/*.typ; do
-            typst compile --root . "$f" "out/job-check.pdf"
-          done
-          rm -f out/job-check.pdf
+      - name: Build
+        run: ci/build.sh out
 
       - name: Publish to the "latest" release
         env:
