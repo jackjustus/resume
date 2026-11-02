@@ -21,6 +21,7 @@ env:
   PR: ${{ github.event.pull_request.number }}
   GH_TOKEN: ${{ github.token }}
   GH_REPO: ${{ github.repository }}
+  MAX_EMPTY_LINES: 2
 
 jobs:
   preview:
@@ -70,14 +71,18 @@ jobs:
             echo
             echo "Built from $HEAD_SHA."
             echo
-            echo "| Version | Pages | PDF |"
-            echo "| --- | --- | --- |"
-            while IFS=$'\t' read -r name pages; do
+            echo "Each version must fit on one page with at most $MAX_EMPTY_LINES empty lines at the bottom."
+            echo
+            echo "| Version | Pages | Empty lines | PDF |"
+            echo "| --- | --- | --- | --- |"
+            while IFS=$'\t' read -r name pages empty; do
               label=${name#Jack_Justus_}; label=${label%_Resume}
-              flag=""; [ "$pages" -gt 1 ] && flag=" ⚠️"
-              echo "| $label | $pages$flag | [PDF]($base/$name.pdf) |"
-            done < out/pages.tsv
-            while IFS=$'\t' read -r name pages; do
+              if [ "$pages" -gt 1 ]; then status="❌ too long"
+              elif awk -v e="$empty" -v m="$MAX_EMPTY_LINES" 'BEGIN { exit !(e > m) }'; then status="❌ too short"
+              else status="✅"; fi
+              echo "| $label | $pages | $empty $status | [PDF]($base/$name.pdf) |"
+            done < out/layout.tsv
+            while IFS=$'\t' read -r name _; do
               label=${name#Jack_Justus_}; label=${label%_Resume}
               echo
               echo "<details><summary>$label</summary>"
@@ -86,7 +91,7 @@ jobs:
               echo "[![$label]($base/$name.png?v=$HEAD_SHA)]($base/$name.pdf)"
               echo
               echo "</details>"
-            done < out/pages.tsv
+            done < out/layout.tsv
           } > comment.md
 
           id=$(gh api "repos/$GH_REPO/issues/$PR/comments" --paginate \
@@ -96,6 +101,10 @@ jobs:
           else
             gh pr comment "$PR" --body-file comment.md
           fi
+
+      # Last, so previews are published even when a version doesn't fit.
+      - name: Check layout
+        run: ci/check.sh out
 
   cleanup:
     if: >-

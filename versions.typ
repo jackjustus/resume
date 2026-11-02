@@ -2,17 +2,17 @@
 #import "blocks.typ": *
 
 #let embedded-skills = (
-  Computer: [Assembly, C/C++, Java, C\#, Python, Git/GitHub, CI/CD, TCP/IP, Linux, LTSpice, MatLab, Fusion360],
-  Hardware: [KiCad, Embedded Systems, Soldering, Diagnostics, Documentation, I2C/SPI/UART/CAN],
+  Computer: [Assembly, C/C++, Java, C\#, Python, Git/GitHub, CI/CD, TCP/IP, Linux, LTspice, MATLAB, Fusion 360],
+  Hardware: [KiCad, Embedded Systems, Soldering, I2C/SPI/UART/CAN],
 )
 
 #let embedded(skills: embedded-skills) = resume(skills: skills)[
   #section[Relevant Experience]
   #digits
-  #ride-club()
+  #ride-club(ui: false)
   #motorsport
   #ta
-  #shine
+  #shine(short: true)
 ]
 
 #let swe-skills = (
@@ -26,22 +26,22 @@
   #ta
   #ride-club(ui: false)
   #motorsport
-  #shine
+  #shine(short: true)
 ]
 
 #let entertainment-skills = (
   Controls: [Control Systems, PLCs, Ladder Logic, Electrical Systems, Communication Networks, System Design],
-  Entertainment: [GrandMA2/3, ASTM F2291, ASTM F3598, Unity],
-  Computer: [C/C++, C\#, Java/Kotlin, Python, Linux, Microsoft Office (Excel, Word, Powerpoint), Git/GitHub],
-  Hardware: [KiCad, Raspberry Pi, Soldering, I2C/SPI/UART/CAN, CAD (Solidworks, AutoCAD, Fusion360)],
+  Entertainment: [GrandMA2/3, Hog 4, Vectorworks, Lightwright, ASTM F2291, ASTM F3598, Unity],
+  Computer: [C/C++, C\#, Java/Kotlin, Python, Linux, Git/GitHub],
+  Hardware: [KiCad, Raspberry Pi, Soldering, I2C/SPI/UART/CAN, CAD (SolidWorks, AutoCAD, Fusion 360)],
 )
 
 #let entertainment(skills: entertainment-skills) = resume(skills: skills)[
   #section[Relevant Experience]
-  #trec-virtcommisioningvariant()
+  #ride-club(risk: true)
   #digits
+  #jjld
   #lighting
-  #motorsport
   //#ta
   //#section[Projects]
   //#lp-solver
