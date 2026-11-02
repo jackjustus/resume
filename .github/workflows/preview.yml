@@ -30,7 +30,7 @@ jobs:
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: [self-hosted, resume]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Build
         run: ci/build.sh out
@@ -39,18 +39,24 @@ jobs:
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          gh release delete "$TAG" --cleanup-tag --yes || true
           assets=()
           for f in out/*.pdf out/*.png; do
             base=$(basename "$f")
             assets+=("$f#${base//_/ }")
           done
-          gh release create "$TAG" "${assets[@]}" \
-            --title "Preview for #$PR" \
-            --notes "Built from $HEAD_SHA. Deleted automatically when #$PR closes." \
-            --target "$HEAD_SHA" \
-            --prerelease \
-            --latest=false
+          # GitHub's release API sometimes 5xxs mid-upload; start over and retry.
+          for attempt in 1 2 3; do
+            gh release delete "$TAG" --cleanup-tag --yes || true
+            gh release create "$TAG" "${assets[@]}" \
+              --title "Preview for #$PR" \
+              --notes "Built from $HEAD_SHA. Deleted automatically when #$PR closes." \
+              --target "$HEAD_SHA" \
+              --prerelease \
+              --latest=false && break
+            [ "$attempt" = 3 ] && exit 1
+            echo "::warning::release upload failed (attempt $attempt), retrying"
+            sleep 10
+          done
 
       - name: Comment with previews
         env:

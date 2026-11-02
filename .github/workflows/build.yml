@@ -16,7 +16,7 @@ jobs:
   publish:
     runs-on: [self-hosted, resume]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Build
         run: ci/build.sh out
@@ -25,13 +25,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete latest --cleanup-tag --yes || true
           assets=()
           for f in out/*.pdf out/*.png; do
             base=$(basename "$f")
             assets+=("$f#${base//_/ }")
           done
-          gh release create latest "${assets[@]}" \
-            --title latest \
-            --notes "" \
-            --target "$GITHUB_SHA"
+          # GitHub's release API sometimes 5xxs mid-upload; start over and retry.
+          for attempt in 1 2 3; do
+            gh release delete latest --cleanup-tag --yes || true
+            gh release create latest "${assets[@]}" \
+              --title latest \
+              --notes "" \
+              --target "$GITHUB_SHA" && break
+            [ "$attempt" = 3 ] && exit 1
+            echo "::warning::release upload failed (attempt $attempt), retrying"
+            sleep 10
+          done
