@@ -21,6 +21,9 @@ jobs:
       - name: Build
         run: ci/build.sh out
 
+      - name: Check layout
+        run: ci/check.sh out
+
       - name: Publish to the "latest" release
         env:
           GH_TOKEN: ${{ github.token }}

@@ -67,7 +67,12 @@
   section[Skills]
   skills.pairs().map(((label, items)) => [#text(fill: blue)[*#label:*] #items]).join(linebreak())
 
-  context if counter(page).final().first() > 1 {
-    //warn("resume runs past one page")
-  }
+  // Where the content ends, for ci/build.sh to check page fill with
+  // `typst query`. Metadata is invisible, so this doesn't affect layout.
+  context [#metadata((
+    page: here().page(),
+    y: here().position().y.pt(),
+    bottom: page.height.pt() - page.margin.bottom.length.pt(),
+    pitch: pitch.pt(),
+  )) <resume-end>]
 }
